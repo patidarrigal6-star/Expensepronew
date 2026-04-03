@@ -549,7 +549,7 @@ function App() {
                 </div>
                 )}
                 {activeTab === 'dashboard' && (
-                <div className="dashboard-controls" style={{ display: 'flex', gap: '20px', position: 'relative', flexWrap: 'nowrap' }}>
+                <div className="dashboard-controls">
                     <div 
                     className="control-pill" 
                     onClick={() => setViewMode(viewMode === 'monthly' ? 'yearly' : 'monthly')}
@@ -588,38 +588,22 @@ function App() {
                     </div>
 
                     <button 
-                    className="btn btn-success" 
+                    className="btn btn-success btn-download" 
                     onClick={handleDownloadPDF}
-                    style={{ 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        gap: '10px', 
-                        background: '#10b981', 
-                        color: 'white', 
-                        border: 'none', 
-                        padding: '0 24px', 
-                        height: '44px',
-                        borderRadius: '12px', 
-                        fontWeight: 800,
-                        fontSize: '0.95rem',
-                        boxShadow: '0 4px 15px rgba(16, 185, 129, 0.4)',
-                        cursor: 'pointer',
-                        transition: 'all 0.2s',
-                        whiteSpace: 'nowrap'
-                    }}>
+                    >
                     <Download size={20} strokeWidth={2.5} />
-                    Download Report
+                    <span className="btn-text">Download Report</span>
                     </button>
+
+                    {activeTab !== 'investments' && (
+                      <div className="control-pill date-pill">
+                        <Calendar size={18} strokeWidth={2.5} />
+                        <span>{format(new Date(), 'EEEE, dd MMMM')}</span>
+                      </div>
+                    )}
                 </div>
                 )}
             </div>
-            
-            {activeTab !== 'investments' && (
-              <div className="control-pill date-pill">
-                <Calendar size={18} strokeWidth={2.5} />
-                <span>{format(new Date(), 'EEEE, dd MMMM')}</span>
-              </div>
-            )}
           </div>
         </header>
 

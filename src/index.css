@@ -220,6 +220,68 @@ body {
   transform: translateY(-2px);
 }
 
+/* 📊 DASHBOARD CONTROLS & RESPONSIVE GRID 📊 */
+.dashboard-controls {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.btn-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #10b981 !important;
+  color: white !important;
+  border: none !important;
+  padding: 0 24px;
+  height: 44px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-download:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+}
+
+@media (max-width: 1024px) {
+  .dashboard-controls {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .btn-download .btn-text {
+    display: none;
+  }
+
+  .btn-download {
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .dashboard-controls > * {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  .date-pill {
+    margin-top: 0 !important;
+  }
+}
+
 
 .nav-list {
   display: flex;
