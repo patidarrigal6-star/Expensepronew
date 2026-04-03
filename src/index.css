@@ -214,73 +214,6 @@ body {
   transition: var(--transition);
 }
 
-.control-pill:hover {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border-color: rgba(255, 255, 255, 0.3) !important;
-  transform: translateY(-2px);
-}
-
-/* 📊 DASHBOARD CONTROLS & RESPONSIVE GRID 📊 */
-.dashboard-controls {
-  display: flex;
-  gap: 20px;
-  position: relative;
-  flex-wrap: nowrap;
-  align-items: center;
-}
-
-.btn-download {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: #10b981 !important;
-  color: white !important;
-  border: none !important;
-  padding: 0 24px;
-  height: 44px;
-  border-radius: 12px;
-  font-weight: 800;
-  font-size: 0.95rem;
-  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-
-.btn-download:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.1);
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
-}
-
-@media (max-width: 1024px) {
-  .dashboard-controls {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 12px !important;
-    width: 100%;
-    margin-top: 1rem;
-  }
-
-  .btn-download .btn-text {
-    display: none;
-  }
-
-  .btn-download {
-    padding: 0 !important;
-    width: 100% !important;
-  }
-
-  .dashboard-controls > * {
-    width: 100% !important;
-    margin: 0 !important;
-  }
-  
-  .date-pill {
-    margin-top: 0 !important;
-  }
-}
 
 
 .nav-list {
@@ -1563,3 +1496,98 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-weight: 800;
   cursor: pointer;
 }
+
+/* 📊 DASHBOARD CONTROLS & RESPONSIVE GRID 📊 */
+.control-pill:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-2px);
+}
+
+.dashboard-controls {
+  display: flex !important;
+  gap: 20px;
+  position: relative;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.btn-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #10b981 !important;
+  color: white !important;
+  border: none !important;
+  padding: 0 24px;
+  height: 44px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-download:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+}
+
+@media (max-width: 1024px) {
+  .dashboard-controls {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    width: 100% !important;
+    margin-top: 1rem;
+    justify-content: space-between !important;
+    flex-direction: row !important; /* Force override of flex-direction: column */
+  }
+
+  /* Force override global width: 100% !important */
+  .dashboard-controls .control-pill,
+  .dashboard-controls div,
+  .dashboard-controls .btn {
+    width: auto !important;
+    flex-direction: row !important;
+  }
+
+  .btn-download .btn-text {
+    display: none;
+  }
+
+  /* Row 1: Filters (50/50 split) */
+  .dashboard-controls > .control-pill:nth-child(1),
+  .dashboard-controls > div:nth-child(2) {
+    width: calc(50% - 6px) !important;
+    margin: 0 !important;
+    flex: 0 0 auto !important;
+  }
+  
+  .dashboard-controls > div:nth-child(2) .control-pill {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* Row 2: Download Icon (Narrow) & Date (Wide) */
+  .dashboard-controls > .btn-download:nth-child(3) {
+    width: 64px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex: 0 0 auto !important;
+  }
+
+  .dashboard-controls > .date-pill:nth-child(4) {
+    flex: 1 !important;
+    width: calc(100% - 76px) !important; 
+    margin: 0 !important;
+    white-space: nowrap !important;
+    font-size: 0.82rem !important;
+    min-width: 0 !important;
+    display: flex !important;
+  }
+}
