@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-  History, LayoutDashboard, PieChart, Settings, PlusCircle, LogOut, X, ChevronRight, TrendingUp, Wallet
+  History, LayoutDashboard, PieChart, Settings, PlusCircle, LogOut, ChevronRight, TrendingUp, Wallet
 } from 'lucide-react';
 
 const Sidebar = ({ activeTab, setActiveTab, onAddClick, isOpen, onClose, onLogout }) => {
@@ -36,23 +36,6 @@ const Sidebar = ({ activeTab, setActiveTab, onAddClick, isOpen, onClose, onLogou
                             marginTop: '-2px' // Micro-adjustment for absolute visual centering
                         }}>ExpensePro</div>
                     </div>
-                    <button className="mobile-toggle" style={{ 
-                        padding: 0, 
-                        width: 32, 
-                        height: 32, 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        justifyContent: 'center', 
-                        background: 'rgba(255,255,255,0.03)', 
-                        border: '1px solid rgba(255,255,255,0.08)', 
-                        borderRadius: '8px',
-                        color: 'rgba(255,255,255,0.4)',
-                        cursor: 'pointer',
-                        transition: 'all 0.2s ease',
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
-                    }} onClick={onClose}>
-                        <X size={18} />
-                    </button>
                 </div>
 
                 <div className="nav-list" style={{ flex: 1, padding: '0 4px' }}>
