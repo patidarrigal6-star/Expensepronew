@@ -923,6 +923,42 @@ h2 {
   cursor: not-allowed;
 }
 
+/* 📱 Responsive Adjustments for Mobile */
+@media (max-width: 480px) {
+  .pin-input-container {
+    gap: 6px;
+    margin: 1.25rem 0;
+  }
+  
+  .pin-box {
+    width: 40px;
+    height: 52px;
+    font-size: 1.4rem;
+    border-radius: 10px;
+    border-width: 2px;
+  }
+
+  .login-container {
+    padding: 1.5rem 1rem !important;
+    width: 92% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+  }
+
+  .login-header h1 {
+    font-size: 1.6rem !important;
+  }
+
+  .login-header p {
+    font-size: 0.8rem !important;
+  }
+
+  .btn-quick-add {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+}
+
 .forgot-pin-btn {
   background: none;
   border: none;
