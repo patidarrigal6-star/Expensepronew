@@ -113,19 +113,18 @@ const Login = React.memo(({ onLoginSuccess, initialResetMode = false, onQuickAdd
     <div className="login-wrapper mesh-gradient">
       <div className="login-glow"></div>
       <div className="login-container">
-
         <div className="login-header">
-          <div className="logo-icon-wrapper" style={{ marginBottom: '1.5rem' }}>
-            {mode === 'login' && <Lock size={48} strokeWidth={2} />}
-            {mode === 'master' && <Key size={48} strokeWidth={2} style={{ color: '#d946ef' }} />}
-            {mode === 'reset' && <ShieldCheck size={48} strokeWidth={2} />}
+          <div className="logo-icon-wrapper" style={{ marginBottom: '1.25rem' }}>
+            {mode === 'login' && <Lock size={32} strokeWidth={2.5} />}
+            {mode === 'master' && <Key size={32} strokeWidth={2.5} style={{ color: '#d946ef' }} />}
+            {mode === 'reset' && <ShieldCheck size={32} strokeWidth={2.5} />}
           </div>
           <h1>
             {mode === 'login' && 'Enter PIN'}
             {mode === 'master' && 'Owner Verification'}
             {mode === 'reset' && 'Create New PIN'}
           </h1>
-          <p style={{ color: '#94a3b8', fontSize: '0.95rem', fontWeight: 500, marginTop: '0.5rem' }}>
+          <p className="login-subtitle">
             {mode === 'login' && 'Dashboard is locked. Enter your 6-digit PIN.'}
             {mode === 'master' && 'Please enter your Master Safety Key to reset.'}
             {mode === 'reset' && 'Create a new 6-digit secure PIN for your dashboard.'}
@@ -135,21 +134,21 @@ const Login = React.memo(({ onLoginSuccess, initialResetMode = false, onQuickAdd
         <div className="login-form">
           {error && (
             <div className="login-error" style={{ justifyContent: 'center' }}>
-              <AlertCircle size={20} />
+              <AlertCircle size={18} />
               <span>{error}</span>
             </div>
           )}
 
           {message && (
-            <div className="reset-badge" style={{ backgroundColor: 'rgba(124, 58, 237, 0.1)', color: '#a78bfa', borderColor: 'rgba(124, 58, 237, 0.2)', width: '100%', justifyContent: 'center', padding: '12px', marginBottom: '1.5rem' }}>
-              <ShieldCheck size={18} />
+            <div className="reset-badge" style={{ backgroundColor: 'rgba(124, 58, 237, 0.1)', color: '#a78bfa', borderColor: 'rgba(124, 58, 237, 0.2)', width: '100%', justifyContent: 'center', padding: '10px', marginBottom: '1.25rem' }}>
+              <ShieldCheck size={16} />
               <span>{message}</span>
             </div>
           )}
 
           {mode === 'master' ? (
             <form onSubmit={handleMasterKeySubmit}>
-              <div className="form-group" style={{ marginBottom: '1.5rem' }}>
+              <div className="form-group" style={{ marginBottom: '1.25rem' }}>
                 <input
                   autoFocus
                   type="password"
@@ -157,13 +156,14 @@ const Login = React.memo(({ onLoginSuccess, initialResetMode = false, onQuickAdd
                   onChange={(e) => setMasterKeyInput(e.target.value)}
                   placeholder="Enter Master Safety Key"
                   className="input"
-                  style={{ textAlign: 'center', fontSize: '1.1rem', letterSpacing: '2px', fontWeight: 'bold' }}
+                  style={{ textAlign: 'center', fontSize: '1rem', letterSpacing: '2px', fontWeight: 'bold' }}
                 />
               </div>
               <button 
                 type="submit" 
                 className="btn btn-primary login-btn" 
                 disabled={loading || !masterKeyInput}
+                style={{ marginTop: '0.5rem' }}
               >
                 {loading ? 'Verifying...' : 'Unlock System'}
               </button>
@@ -197,26 +197,14 @@ const Login = React.memo(({ onLoginSuccess, initialResetMode = false, onQuickAdd
           )}
 
           {mode === 'login' && (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <button 
-                type="button" 
-                className="forgot-pin-btn"
-                onClick={() => setMode('master')}
-                disabled={loading}
-                style={{ marginBottom: '1.5rem' }}
-              >
-                Forgot PIN? (Use Master Key)
-              </button>
-              <div className="quick-access-banner" style={{ width: '100%' }}>
-                 <button 
-                    className="btn-quick-add"
-                    onClick={onQuickAdd}
-                 >
-                    <Plus size={20} strokeWidth={3} />
-                    <span>Quick Add Expense</span>
-                 </button>
-              </div>
-            </div>
+            <button 
+              type="button" 
+              className="forgot-pin-btn"
+              onClick={() => setMode('master')}
+              disabled={loading}
+            >
+              Forgot PIN? (Use Master Key)
+            </button>
           )}
         </div>
 
