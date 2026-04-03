@@ -157,8 +157,13 @@ function App() {
     if (isLoggedIn || isQuickMode) fetchExpenses();
   }, [isLoggedIn, isQuickMode, fetchExpenses]);
 
+  const [resetMode, setResetMode] = useState(false);
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+    if (params.get('reset') === 'true') {
+      setResetMode(true);
+    }
     if (params.get('mode') === 'quick') {
       setIsQuickMode(true);
       setActiveTab('add');
@@ -421,7 +426,7 @@ function App() {
     setExpenses(prev => prev.filter(exp => exp.id !== id));
   }, []);
 
-  if (!isLoggedIn && !isQuickMode) return <Login onLoginSuccess={handleLogin} />;
+  if (!isLoggedIn && !isQuickMode) return <Login onLoginSuccess={handleLogin} initialResetMode={resetMode} onQuickAdd={() => { setIsQuickMode(true); setActiveTab('add'); }} />;
 
   return (
     <div className="app-container mesh-gradient" id="app-root-container">
